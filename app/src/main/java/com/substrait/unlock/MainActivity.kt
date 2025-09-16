@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
     private lateinit var sidebarAdapter: PacketSidebarAdapter
-    private lateinit var navHeaderTitle: TextView
-    private lateinit var btnDeletePacket: Button
+    private lateinit var drawerContentContainer: View
     private lateinit var noPacketMessage: TextView
+    private lateinit var btnDeletePacket: Button
 
     private val qrCodeScanner = registerForActivityResult(ScanContract()) { result ->
         result.contents?.let { url ->
@@ -52,9 +52,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Initialize drawer views
-        navHeaderTitle = binding.navView.findViewById(R.id.nav_header_title)
-        btnDeletePacket = binding.navView.findViewById(R.id.btn_delete_packet)
+        drawerContentContainer = binding.navView.findViewById(R.id.drawer_content_container)
         noPacketMessage = binding.navView.findViewById(R.id.no_packet_message)
+        btnDeletePacket = binding.navView.findViewById(R.id.btn_delete_packet)
 
         btnDeletePacket.setOnClickListener {
             viewModel.closePacket()
@@ -164,14 +164,13 @@ class MainActivity : AppCompatActivity() {
                 binding.appBarMain.contentMain.root.findViewById<View>(R.id.empty_state_container).visibility = View.VISIBLE
 
                 // Update drawer for empty state
-                navHeaderTitle.visibility = View.GONE
-                binding.navView.findViewById<View>(R.id.recycler_view).visibility = View.GONE
+                drawerContentContainer.visibility = View.GONE
                 noPacketMessage.visibility = View.VISIBLE
                 btnDeletePacket.visibility = View.GONE
             } else {
                 // LOADED STATE
                 supportActionBar?.title = packet.title
-                navHeaderTitle.text = packet.title
+                (drawerContentContainer.findViewById<TextView>(R.id.nav_header_title)).text = packet.title
                 sidebarAdapter.submitList(packet.sourceContent)
                 if (packet.sourceContent.isNotEmpty()) {
                     viewModel.setCurrentContent(packet.sourceContent[0])
@@ -180,8 +179,7 @@ class MainActivity : AppCompatActivity() {
                 binding.appBarMain.contentMain.root.findViewById<View>(R.id.empty_state_container).visibility = View.GONE
 
                 // Update drawer for loaded state
-                navHeaderTitle.visibility = View.VISIBLE
-                binding.navView.findViewById<View>(R.id.recycler_view).visibility = View.VISIBLE
+                drawerContentContainer.visibility = View.VISIBLE
                 noPacketMessage.visibility = View.GONE
                 btnDeletePacket.visibility = View.VISIBLE
             }
