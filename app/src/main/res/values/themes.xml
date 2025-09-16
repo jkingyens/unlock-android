@@ -15,5 +15,5 @@
     <style name="Theme.Unlock" parent="Base.Theme.Unlock" />
 
     <style name="Theme.Unlock.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.Unlock.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Unlock.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 </resources>
