@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.substrait.unlock.data.PacketContent
 import com.substrait.unlock.databinding.ActivityMainBinding
 import com.substrait.unlock.ui.PacketSidebarAdapter
+import android.content.Intent // <-- Add this import at the top
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -129,7 +131,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_settings -> {
-                // TODO: Navigate to a settings screen
+                startActivity(Intent(this, SettingsActivity::class.java))
                 return true
             }
         }
