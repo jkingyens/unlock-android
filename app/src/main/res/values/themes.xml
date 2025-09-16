@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Unlock" parent="Theme.Material3.DayNight">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+        <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
+    </style>
+
+    <style name="Theme.Unlock" parent="Base.Theme.Unlock" />
+
+    <style name="Theme.Unlock.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Unlock.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
