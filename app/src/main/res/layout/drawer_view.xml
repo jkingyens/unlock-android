@@ -25,6 +25,15 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/no_packet_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="No Packet Loaded"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/btn_delete_packet"
         style="?attr/materialButtonOutlinedStyle"
